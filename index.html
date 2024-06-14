@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de IMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9DBDFF;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 55px;
+        }
+</style>
+<script>
+function calcularIMC() {
+    var estatura = document.getElementById('estatura').value;
+    var peso = document.getElementById('peso').value;
+    estatura = estatura / 100; // Convertir de cm a metros
+    var imc = peso / (estatura * estatura);
+    var categoria = '';
+
+    if (imc < 18.5) {
+        categoria = 'Bajo peso';
+    } else if (imc >= 18.5 && imc <= 24.9) {
+        categoria = 'Normal';
+    } else if (imc >= 25 && imc <= 29.9) {
+        categoria = 'Sobrepeso';
+    } else {
+        categoria = 'Obesidad';
+    }
+
+    document.getElementById('resultado').innerHTML = 'Tu IMC es: ' + imc.toFixed(2) + ' y tu categoría es: ' + categoria;
+}
+</script>
+</head>
+<body>
+<h1>Calculadora de IMC</h1>
+<p>Estatura (cm): <input type="number" id="estatura"></p>
+<p>Peso (kg): <input type="number" id="peso"></p>
+<button onclick="calcularIMC()">Calcular IMC</button>
+<p id="resultado"></p>
+</body>
+</html>
